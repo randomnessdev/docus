@@ -1,12 +1,8 @@
-import { createResolver, logger } from "@nuxt/kit";
-import { $fetch } from "ofetch";
-import { version } from "./package.json";
+import { createResolver, logger, defineNuxtModule } from '@nuxt/kit'
+import { $fetch } from 'ofetch'
+import { version } from './package.json'
 
-logger.success(`Using Docus v${version}`);
-
-process.env.NUXT_INLINE_STYLES = "true";
-
-const { resolve } = createResolver(import.meta.url);
+const { resolve } = createResolver(import.meta.url)
 
 // That allows to overwrite these dependencies paths via `.env` for local development
 const envModules = {
@@ -27,25 +23,29 @@ export default defineNuxtConfig({
   modules: [
     envModules.tokens,
     envModules.studio,
-    "@nuxtjs/color-mode",
-    "@nuxt/content",
-    "@vueuse/nuxt",
-    "nuxt-config-schema",
-    "@nuxtjs/tailwindcss",
-    resolve("./app/module"),
-    (_, nuxt) => {
-      if (nuxt.options.dev) {
-        $fetch("https://registry.npmjs.org/@nuxt-themes/docus/latest")
-          .then((release) => {
+    '@nuxtjs/color-mode',
+    '@nuxt/content',
+    '@vueuse/nuxt',
+    'nuxt-config-schema',
+    '@nuxtjs/tailwindcss',
+    resolve('./app/module'),
+    defineNuxtModule({
+      meta: {
+        name: '@nuxt-themes/docus'
+      },
+      setup (_, nuxt) {
+        if (nuxt.options.dev) {
+          $fetch('https://registry.npmjs.org/@nuxt-themes/docus/latest').then((release) => {
             if (release.version > version) {
-              logger.info(
-                `A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`
-              );
+              logger.info(`A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`)
             }
-          })
-          .catch((_) => {});
+          }).catch((_) => {})
+        }
       }
-    },
+    })
+  ],
+  css: [
+    resolve('./assets/css/main.css')
   ],
   css: [resolve("./assets/css/main.css")],
   components: [
