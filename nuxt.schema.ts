@@ -11,11 +11,11 @@ export default defineNuxtSchema({
        *
        * @studioIcon material-symbols:title
        */
-      title: 'Docus',
+      title: 'Performance Ergonomie',
       /**
        * The website title template, to overwrite the default one.
        */
-      titleTemplate: '%s · Docus',
+      titleTemplate: '%s · Performance Ergonomie',
       /**
        * Website description, used for meta description.
        *
@@ -98,7 +98,7 @@ export default defineNuxtSchema({
          * Use 0 to disable all nesting.
          * Use 1 and more to display nested navigation in header and aside navigation.
          */
-        level: 0,
+        level: 1,
         /**
          * Specify if default collapsibles state globally for aside navigation.
          */
@@ -108,7 +108,7 @@ export default defineNuxtSchema({
          *
          * @type {string[]}
          */
-        exclude: []
+        exclude: ['contact']
       },
 
       /**
@@ -150,7 +150,7 @@ export default defineNuxtSchema({
          * @type {string[]}
          *
          */
-        exclude: [],
+        exclude: ['contact'],
         /**
          * Makes the content of the header fluid.
          */
@@ -191,8 +191,8 @@ export default defineNuxtSchema({
            * Icon to show on credits
            * @formtype Icon
            */
-          icon: 'IconDocus',
-          text: 'Powered by Docus',
+          // icon: 'IconDocus',
+          text: 'Performance Ergonomie',
           href: 'https://docus.dev'
         },
         /**

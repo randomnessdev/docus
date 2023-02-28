@@ -1,8 +1,8 @@
 export default defineAppConfig({
   docus: {
-    title: 'Docus',
+    title: 'Performance Ergonomie',
 
-    description: 'The best place to start your documentation.',
+    description: "Solutions d'ergonomie et de prévention des risques professionnels.",
 
     image: 'https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png',
 
@@ -19,28 +19,20 @@ export default defineAppConfig({
     },
 
     aside: {
-      level: 0,
+      level: 1,
       collapsed: false,
-      exclude: []
+      exclude: ['contact']
     },
 
     footer: {
       credits: {
         icon: 'IconDocus',
-        text: 'Powered by Docus',
-        href: 'https://docus.dev'
+        text: 'Performance Ergonomie',
+        href: 'https://performance-ergonomie.com'
       },
       textLinks: [],
       iconLinks: [],
       fluid: false
-    },
-
-    github: {
-      dir: undefined,
-      branch: undefined,
-      repo: undefined,
-      owner: undefined,
-      edit: false
     }
   }
 })

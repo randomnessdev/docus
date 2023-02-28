@@ -9,7 +9,7 @@ export default defineAppConfig({
       branch: 'dev',
       repo: 'docus',
       owner: 'nuxt-themes',
-      edit: true,
+      edit: false,
     }
   }
 })

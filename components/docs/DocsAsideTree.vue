@@ -86,7 +86,7 @@ const hasNesting = computed(() => props.links.some((link: any) => link.children)
       </button>
 
       <NuxtLink
-        v-else
+        v-else-if="link._path !== '/contact'"
         :to="link.redirect ? link.redirect : link._path"
         class="link"
         :exact="link.exact"

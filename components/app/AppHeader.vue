@@ -19,7 +19,7 @@ defineProps({
       </div>
 
       <div class="section center">
-        <AppHeaderLogo v-if="hasDialog" />
+        <AppHeaderLogo  />
         <AppHeaderNavigation />
       </div>
 
@@ -72,7 +72,7 @@ css({
       display: 'grid',
       height: '100%',
       gridTemplateColumns: 'repeat(12, minmax(0, 1fr))',
-      gap: '{space.2}'
+      gap: '{space.2}',
     },
 
     '.section': {

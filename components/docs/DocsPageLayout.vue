@@ -29,7 +29,7 @@ const asideScroll = useState('asideScroll', () => {
   }
 })
 
-function watchScrollHeight () {
+function watchScrollHeight() {
   if (!asideNav.value) { return }
   if (asideNav.value.scrollHeight === 0) {
     setTimeout(watchScrollHeight, 0)
@@ -53,16 +53,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Container
-    :fluid="config?.main?.fluid"
-    :padded="config?.main?.padded"
-    class="docs-page-content"
-    :class="{
-      fluid: config?.main?.fluid,
-      'has-toc': hasToc,
-      'has-aside': hasAside,
-    }"
-  >
+  <Container :fluid="config?.main?.fluid" :padded="config?.main?.padded" class="docs-page-content" :class="{
+    fluid: config?.main?.fluid,
+    'has-toc': hasToc,
+    'has-aside': hasAside,
+  }">
     <!-- Aside -->
     <aside v-if="hasAside" ref="asideNav" class="aside-nav">
       <DocsAside class="app-aside" />
@@ -70,7 +65,9 @@ onBeforeUnmount(() => {
 
     <!-- Page Body -->
     <article class="page-body">
-      <slot v-if="hasBody" />
+      <div  v-if="hasBody" class="max-w-3xl m-auto">
+        <slot class="max-w-3xl" />
+      </div>
       <Alert v-else type="info">
         Start writing in <ProseCodeInline>content/{{ page._file }}</ProseCodeInline> to see this page taking shape.
       </Alert>
@@ -91,6 +88,19 @@ onBeforeUnmount(() => {
         <div class="docs-toc-wrapper" :class="[isOpen && 'opened']">
           <DocsToc @move="isOpen = false" />
         </div>
+      </div>
+      <div class="p-4 border shadow-2xl border-sky-100 bg-sky-50 dark:border-slate-900 dark:bg-slate-800 rounded-2xl">
+        <h3 class="flex items-center gap-2 mb-4 text-base font-semibold">
+          <Icon name="heroicons:chat-bubble-left-right-solid" /> Contactez-nous
+        </h3>
+        <p class="mb-6 text-sm description">
+          Prenons contact, nous vous proposerons une présentation personnalisée de nos prestations.
+        </p>
+        <NuxtLink href="/contact"
+          class="flex items-center gap-2 font-bold text-blue-500 hover:text-blue-900 dark:hover:text-blue-200">
+          Nous contacter
+          <Icon name="heroicons:cursor-arrow-ripple" class="w-6 h-6" />
+        </NuxtLink>
       </div>
     </div>
   </Container>
@@ -200,6 +210,7 @@ css({
     position: 'sticky',
     top: '{docus.header.height}',
     display: 'flex',
+    flexDirection: 'column',
     mx: 'calc(0px - {space.4})',
     overflow: 'auto',
     borderBottom: '1px solid {elements.border.primary.static}',
@@ -210,7 +221,7 @@ css({
       mx: 0,
       alignSelf: 'flex-start',
       py: '{space.8}',
-      px: '{space.8}',
+      px: '{space.4}',
       height: 'calc(100vh - {docus.header.height})',
       maxHeight: 'none',
       borderBottom: 'none',

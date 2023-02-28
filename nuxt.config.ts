@@ -1,74 +1,97 @@
-import { createResolver, logger } from '@nuxt/kit'
-import { $fetch } from 'ofetch'
-import { version } from './package.json'
+import { createResolver, logger } from "@nuxt/kit";
+import { $fetch } from "ofetch";
+import { version } from "./package.json";
 
-logger.success(`Using Docus v${version}`)
+logger.success(`Using Docus v${version}`);
 
-process.env.NUXT_INLINE_STYLES = 'true'
+process.env.NUXT_INLINE_STYLES = "true";
 
-const { resolve } = createResolver(import.meta.url)
+const { resolve } = createResolver(import.meta.url);
 
 // That allows to overwrite these dependencies paths via `.env` for local development
 const envModules = {
-  tokens: process?.env?.THEME_DEV_TOKENS_PATH || '@nuxt-themes/tokens',
-  elements: process?.env?.THEME_DEV_ELEMENTS_PATH || '@nuxt-themes/elements',
-  studio: process?.env?.THEME_DEV_STUDIO_PATH || '@nuxthq/studio',
-  typography: process?.env?.THEME_DEV_TYPOGRAPHY_PATH || '@nuxt-themes/typography'
-}
+  tokens: process?.env?.THEME_DEV_TOKENS_PATH || "@nuxt-themes/tokens",
+  elements: process?.env?.THEME_DEV_ELEMENTS_PATH || "@nuxt-themes/elements",
+  studio: process?.env?.THEME_DEV_STUDIO_PATH || "@nuxthq/studio",
+  typography:
+    process?.env?.THEME_DEV_TYPOGRAPHY_PATH || "@nuxt-themes/typography",
+};
 
 export default defineNuxtConfig({
   extends: [envModules.typography, envModules.elements],
+  app: {
+    head: {
+      link: [{ rel: "icon", href: "favicon.svg", type: "image/svg+xml"}]
+    }
+  },
   modules: [
     envModules.tokens,
     envModules.studio,
-    '@nuxtjs/color-mode',
-    '@nuxt/content',
-    '@vueuse/nuxt',
-    'nuxt-config-schema',
-    resolve('./app/module'),
+    "@nuxtjs/color-mode",
+    "@nuxt/content",
+    "@vueuse/nuxt",
+    "nuxt-config-schema",
+    "@nuxtjs/tailwindcss",
+    resolve("./app/module"),
     (_, nuxt) => {
       if (nuxt.options.dev) {
-        $fetch('https://registry.npmjs.org/@nuxt-themes/docus/latest').then((release) => {
-          if (release.version > version) {
-            logger.info(`A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`)
-          }
-        }).catch((_) => {})
+        $fetch("https://registry.npmjs.org/@nuxt-themes/docus/latest")
+          .then((release) => {
+            if (release.version > version) {
+              logger.info(
+                `A new version of Docus (v${release.version}) is available: https://github.com/nuxt-themes/docus/releases/latest`
+              );
+            }
+          })
+          .catch((_) => {});
       }
-    }
+    },
   ],
-  css: [
-    resolve('./assets/css/main.css')
-  ],
+  css: [resolve("./assets/css/main.css")],
   components: [
     {
-      prefix: '',
-      path: resolve('./components/app'),
-      global: true
+      prefix: "",
+      path: resolve("./components/app"),
+      global: true,
     },
     {
-      prefix: '',
-      path: resolve('./components/docs'),
-      global: true
-    }
+      prefix: "",
+      path: resolve("./components/docs"),
+      global: true,
+    },
   ],
   pinceau: {
-    studio: true
+    studio: true,
   },
   content: {
     documentDriven: true,
     highlight: {
       theme: {
-        dark: 'github-dark',
-        default: 'github-light'
+        default: "github-light",
+        dark: "github-dark",
       },
-      preload: ['json', 'js', 'ts', 'html', 'css', 'vue', 'diff', 'shell', 'markdown', 'yaml', 'bash', 'ini']
+      preload: [
+        "json",
+        "js",
+        "ts",
+        "html",
+        "css",
+        "vue",
+        "diff",
+        "shell",
+        "markdown",
+        "yaml",
+        "bash",
+        "ini",
+      ],
     },
     navigation: {
-      fields: ['icon', 'titleTemplate', 'header', 'main', 'aside', 'footer']
-    }
+      depth: 0,
+      fields: ["icon", "titleTemplate", "header", "main", "aside", "footer"],
+    },
   },
   colorMode: {
-    classSuffix: '',
-    dataValue: 'theme'
-  }
-})
+    classSuffix: "",
+    dataValue: "theme",
+  },
+});

@@ -3,7 +3,7 @@ const { config } = useDocus()
 </script>
 
 <template>
-  <div class="page-layout">
+  <div class="relative flex col">
     <Container
       :fluid="config?.main?.fluid"
       :padded="config?.main?.padded"
@@ -14,13 +14,3 @@ const { config } = useDocus()
     </Container>
   </div>
 </template>
-
-<style lang="ts" scoped>
-css({
-  '.page-layout': {
-    display: 'flex',
-    flexDirection: 'column',
-    position: 'relative'
-  }
-})
-</style>

@@ -7,7 +7,7 @@ const emit = defineEmits(['move'])
   <div class="docs-toc">
     <template v-if="toc?.links?.length">
       <div class="docs-toc-title">
-        <span>Table of Contents</span>
+        <span>Sections</span>
       </div>
 
       <DocsTocLinks :links="toc.links" @move="emit('move')" />

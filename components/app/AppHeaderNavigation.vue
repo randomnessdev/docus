@@ -19,7 +19,7 @@ const isActive = (link: any) => (link.exact ? route.fullPath === link._path : ro
 </script>
 
 <template>
-  <nav v-if="hasNavigation">
+  <nav>
     <ul>
       <li
         v-for="link in tree"

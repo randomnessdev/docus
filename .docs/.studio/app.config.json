@@ -1,11 +1,11 @@
 {
   "docus": {
-    "title": "Docus",
+    "title": "Performance Ergonomie",
     "description": "The best place to start your documentation.",
     "image": "https://user-images.githubusercontent.com/904724/185365452-87b7ca7b-6030-4813-a2db-5e65c785bf88.png",
     "socials": {
-      "twitter": "nuxtstudio",
-      "github": "nuxt-themes/docus",
+      "twitter": "",
+      "github": "",
       "facebook": "",
       "instagram": "",
       "youtube": "",
@@ -14,7 +14,7 @@
     "aside": {
       "level": 0,
       "collapsed": false,
-      "exclude": []
+      "exclude": ["contact"]
     },
     "main": {
       "padded": true,
@@ -29,17 +29,11 @@
     },
     "footer": {
       "credits": {
-        "icon": "IconDocus",
-        "text": "Powered by Docus",
-        "href": "https://docus.dev"
+        "icon": "",
+        "text": "Performance Ergonomie © 2023",
+        "href": "https://performance-ergonomie.com"
       },
-      "iconLinks": [
-        {
-          "href": "https://nuxt.com",
-          "icon": "IconNuxtLabs",
-          "label": "Nuxt"
-        }
-      ],
+
       "fluid": true
     },
     "github": {
