@@ -17,7 +17,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="">
+  <div class="mb-12">
     <h3 class="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white">
       <Icon name="heroicons-solid:question-mark-circle" class="w-5 h-5 mr-2 text-gray-500" />
       <ContentSlot :use="$slots.title" unwrap="p">

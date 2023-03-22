@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background: #f5f5f7;
+}
 .container.has-aside {
   max-width: 100% !important
 }
@@ -62,7 +65,8 @@ body {
   overflow-y: scroll;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $dt('color.white');
+  /* background: $dt('color.white'); */
+  background: #f5f5f7;
   color: $dt('color.gray.700');
   font-family: $dt('font.sans');
   min-width: $dt('size.xs');

@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
           <DocsToc @move="isOpen = false" />
         </div>
       </div>
-      <div class="p-4 border shadow-2xl border-sky-100 bg-sky-50 dark:border-slate-900 dark:bg-slate-800 rounded-2xl">
+      <div class="p-4 bg-white border shadow-2xl border-sky-100 dark:border-slate-900 dark:bg-slate-800 rounded-2xl">
         <h3 class="flex items-center gap-2 mb-4 text-base font-semibold">
           <Icon name="heroicons:chat-bubble-left-right-solid" /> Contactez-nous
         </h3>

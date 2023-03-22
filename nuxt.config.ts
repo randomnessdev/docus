@@ -47,7 +47,6 @@ export default defineNuxtConfig({
   css: [
     resolve('./assets/css/main.css')
   ],
-  css: [resolve("./assets/css/main.css")],
   components: [
     {
       prefix: "",
